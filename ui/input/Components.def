@@ -1,0 +1,85 @@
+BUTTON HomeButton:
+	backgroundcolor = 'indianred'
+	width = 100
+	height = 50
+	text = 'Home'
+	onclick = open(Main.view)
+
+BUTTON AboutButton:
+	backgroundcolor = 'lightgreen'
+	width = 100
+	height = 50
+	text = 'About'
+	onclick = open(About.view)
+
+BUTTON FormButton:
+	backgroundcolor = 'lightblue'
+	width = 100
+	height = 50
+	text = 'Form'
+	onclick = open(Form.view)
+
+BUTTON MyButton:
+	backgroundcolor = 'gray'
+	width = 'fit-content'
+	height = 50
+	text = t
+	onclick = [set(MyPicture.width, MyPicture.width+10), set(MyPicture.height, MyPicture.height+10)]
+
+BUTTON ColorButton:
+	backgroundcolor = 'gray'
+	width = 'fit-content'
+	height = 50
+	text = 'Click me!'
+	onclick = [set(AboutButton.backgroundcolor, FormButton.backgroundcolor), set(FormButton.backgroundcolor, HomeButton.backgroundcolor), set(HomeButton.backgroundcolor, AboutButton.backgroundcolor)]
+
+TEXT MyText:
+	text = t
+	color = 'black'
+	fontsize = 12
+	fontstyle = 'bold'
+
+PICTURE MyPicture:
+	url = s
+	alt = 'Description'
+	width = 200
+	height = 200
+
+CONTAINER NavBar:
+	borderstyle = 'solid'
+    bordercolor = 'black'
+    borderwidth = 1
+	direction = 'row'
+	padding = 0
+	alignment = 'left'
+
+TEXTINPUT Field:
+	value = val
+	width = 200
+
+CONTAINER FormField:
+	direction = 'row'
+	gap = 20
+	padding = 20
+	borderstyle = 'dotted'
+	bordercolor = 'red'
+
+CONTAINER Form:
+	direction = 'column'
+	borderstyle = 'solid'
+	bordercolor = 'black'
+	borderwidth = 1
+
+CHECKBOX Included:
+	checked = true
+
+MyText WITH t="Your Name" AS yourName
+Field WITH val="Enter your name here!" AS yourNameInput
+FormField WITH components=[yourName, yourNameInput] AS formField
+
+MyText WITH t="Change picture dimensions" AS changePictureButtonText
+HomeButton AS hb
+AboutButton AS ab
+FormButton AS fb
+NavBar WITH components=[hb, ab, fb] AS nb
+MyPicture WITH s="https://www.insidevancouver.ca/wp-content/uploads/2021/10/vimff-fs-2021-desire-lines-gallery-7.jpg" AS dp

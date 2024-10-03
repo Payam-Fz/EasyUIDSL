@@ -1,0 +1,35 @@
+{
+  "name": "ui-design-language",
+  "version": "1.0.0",
+  "description": "A UI Design Language designed for non-programmers",
+  "scripts": {
+    "gen": "npm run gen-lexer && npm run gen-def-parser && npm run gen-view-parser",
+    "gen-lexer": "java -jar ./antlr-4.13.1-complete.jar -Dlanguage=TypeScript -o ./gen -Xexact-output-dir ./parser/UILexer.g4",
+    "gen-def-parser": "java -jar ./antlr-4.13.1-complete.jar -visitor -Dlanguage=TypeScript -o ./gen -lib ./gen -Xexact-output-dir ./parser/DefinitionParser.g4",
+    "gen-view-parser": "java -jar ./antlr-4.13.1-complete.jar -visitor -Dlanguage=TypeScript -o ./gen -lib ./gen/ -Xexact-output-dir ./parser/ViewParser.g4",
+    "test": "jest",
+    "dev": "ts-node ./ui/Main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.students.cs.ubc.ca/CPSC410-2023W-T2/Group7Project1"
+  },
+  "author": "Elias Chen, Sean Ford, Payam Forouzandeh, Angus Ho, Sarah Li",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.17.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.14.202",
+    "jest": "^29.7.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "antlr4": "^4.13.1-patch-1",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.9.2"
+  }
+}
